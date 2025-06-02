@@ -1,0 +1,125 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "backyard_hybrid",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "backyard_hybrid (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "backyard_hybrid (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "bottombar",
+            "cwd": "bottombar",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "bottombar (profile mode)",
+            "cwd": "bottombar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "bottombar (release mode)",
+            "cwd": "bottombar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "curved_navigation_bar",
+            "cwd": "curved_navigation_bar",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "curved_navigation_bar (profile mode)",
+            "cwd": "curved_navigation_bar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "curved_navigation_bar (release mode)",
+            "cwd": "curved_navigation_bar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "intl_phone_field",
+            "cwd": "intl_phone_field",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "intl_phone_field (profile mode)",
+            "cwd": "intl_phone_field",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "intl_phone_field (release mode)",
+            "cwd": "intl_phone_field",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "locationpicker",
+            "cwd": "locationpicker",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "locationpicker (profile mode)",
+            "cwd": "locationpicker",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "locationpicker (release mode)",
+            "cwd": "locationpicker",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "month_year_picker",
+            "cwd": "month_year_picker",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "month_year_picker (profile mode)",
+            "cwd": "month_year_picker",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "month_year_picker (release mode)",
+            "cwd": "month_year_picker",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
