@@ -201,7 +201,12 @@ class _SettingsState extends State<Settings> {
     MenuModel(
         name: 'Subscriptions',
         onTap: () {
-          AppNavigation.navigateTo(AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
+          AppNavigation.navigateTo(AppRouteName.CONTENT_SCREEN,
+              arguments: ContentRoutingArgument(
+                  title: 'Subscriptions',
+                  contentType: "Subscriptions",
+                  url: 'https://www.google.com/'));
+          // AppNavigation.navigateTo(AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
         })
   ];
   late List<MenuModel> userList = [
@@ -278,7 +283,12 @@ class _SettingsState extends State<Settings> {
     MenuModel(
         name: 'Subscriptions',
         onTap: () {
-          AppNavigation.navigateTo(AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
+          AppNavigation.navigateTo(AppRouteName.CONTENT_SCREEN,
+              arguments: ContentRoutingArgument(
+                  title: 'Subscriptions',
+                  contentType: "Subscriptions",
+                  url: 'https://www.google.com/'));
+          // AppNavigation.navigateTo(AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
         })
   ];
   showBarberList({required List<MenuModel> l}) {

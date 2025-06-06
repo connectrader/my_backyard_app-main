@@ -67,10 +67,7 @@ Future<DateTime?> showMonthYearPicker({
   );
 
   if (textDirection != null) {
-    dialog = Directionality(
-      textDirection: textDirection,
-      child: dialog,
-    );
+    dialog = Directionality(textDirection: textDirection, child: dialog);
   }
 
   if (locale != null) {
@@ -90,10 +87,7 @@ Future<DateTime?> showMonthYearPicker({
 }
 
 // ################################ ENUMERATIONS ###############################
-enum MonthYearPickerMode {
-  month,
-  year,
-}
+enum MonthYearPickerMode { month, year }
 
 // ################################## CLASSES ##################################
 class MonthYearPickerDialog extends StatefulWidget {
@@ -175,12 +169,14 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
     final direction = Directionality.of(context);
 
     final dateText = materialLocalizations.formatMonthYear(_selectedDate);
-    final onPrimarySurface = colorScheme.brightness == Brightness.light
-        ? colorScheme.onPrimary
-        : colorScheme.onSurface;
-    final dateStyle = orientation == Orientation.landscape
-        ? textTheme.headline5?.copyWith(color: onPrimarySurface)
-        : textTheme.headline4?.copyWith(color: onPrimarySurface);
+    final onPrimarySurface =
+        colorScheme.brightness == Brightness.light
+            ? colorScheme.onPrimary
+            : colorScheme.onSurface;
+    final dateStyle =
+        orientation == Orientation.landscape
+            ? textTheme.headlineLarge?.copyWith(color: onPrimarySurface)
+            : textTheme.headlineLarge?.copyWith(color: onPrimarySurface);
 
     final Widget actions = Container(
       alignment: AlignmentDirectional.centerEnd,
@@ -220,7 +216,8 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
               24.0,
               16.0,
             ),
-            primary: Theme.of(context).textTheme.caption?.color,
+
+            // primary: Theme.of(context).textTheme.caption?.color,
           ),
           child: Row(
             children: [
@@ -262,7 +259,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
                 ),
                 splashRadius: 24,
                 onPressed: _canGoNext ? _goToNextPage : null,
-              )
+              ),
             ],
           ),
         ),
@@ -304,7 +301,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
               bottom: _isShowingYear ? -constraints.maxHeight : 0.0,
               child: SizedBox(
                 height: constraints.maxHeight,
-                child:pickers.MonthPicker (
+                child: pickers.MonthPicker(
                   key: _monthPickerState,
                   initialDate: _selectedDate,
                   firstDate: widget.firstDate,
@@ -316,7 +313,7 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
                       widget.selectableMonthYearPredicate,
                 ),
               ),
-            )
+            ),
           ],
         );
       },
@@ -337,9 +334,9 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
           duration: _dialogSizeAnimationDuration,
           curve: Curves.easeIn,
           child: MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: textScaleFactor,
-            ),
+            data: MediaQuery.of(
+              context,
+            ).copyWith(textScaleFactor: textScaleFactor),
             child: Builder(
               builder: (context) {
                 switch (orientation) {
@@ -463,7 +460,7 @@ class _Header extends StatelessWidget {
     final onPrimarySurfaceColor =
         isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
-    final helpStyle = textTheme.overline?.copyWith(
+    final helpStyle = textTheme.bodyMedium?.copyWith(
       color: onPrimarySurfaceColor,
     );
 
@@ -489,10 +486,7 @@ class _Header extends StatelessWidget {
           child: Material(
             color: Color(0xff540163),
             child: Padding(
-              padding: const EdgeInsetsDirectional.only(
-                start: 24.0,
-                end: 24.0,
-              ),
+              padding: const EdgeInsetsDirectional.only(start: 24.0, end: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

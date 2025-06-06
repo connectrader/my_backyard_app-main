@@ -267,9 +267,10 @@ class _MonthButton extends StatelessWidget {
     final date = DateTime(year, index + 1);
     final locale = Localizations.localeOf(context).toString();
 
-    final isEnabled = selectableMonthYearPredicate == null
-        ? firstDate.compareTo(date) <= 0 && lastDate.compareTo(date) >= 0
-        : selectableMonthYearPredicate!(date);
+    final isEnabled =
+        selectableMonthYearPredicate == null
+            ? firstDate.compareTo(date) <= 0 && lastDate.compareTo(date) >= 0
+            : selectableMonthYearPredicate!(date);
     final isSelected =
         date.month == selectedDate.month && date.year == selectedDate.year;
 
@@ -315,9 +316,10 @@ class _YearButton extends StatelessWidget {
     final date = DateTime(year);
     final locale = Localizations.localeOf(context).toString();
 
-    final isEnabled = selectableMonthYearPredicate == null
-        ? year >= firstDate.year && year <= lastDate.year
-        : selectableMonthYearPredicate!(date);
+    final isEnabled =
+        selectableMonthYearPredicate == null
+            ? year >= firstDate.year && year <= lastDate.year
+            : selectableMonthYearPredicate!(date);
     final isSelected = year == selectedDate.year;
 
     final now = DateTime.now();
@@ -355,11 +357,13 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final buttonBackground = isSelected ? Color(0xff540163):null;// colorScheme.secondary : null;
-    final buttonText = isSelected
-        ? colorScheme.onSecondary
-        : isHighlighted
-            ? Color(0xff540163)//colorScheme.secondary
+    final buttonBackground =
+        isSelected ? Color(0xff540163) : null; // colorScheme.secondary : null;
+    final buttonText =
+        isSelected
+            ? colorScheme.onSecondary
+            : isHighlighted
+            ? Color(0xff540163) //colorScheme.secondary
             : colorScheme.onSurface;
 
     return Padding(
@@ -368,8 +372,8 @@ class _Button extends StatelessWidget {
         onPressed: isEnabled ? onPressed : null,
         style: TextButton.styleFrom(
           backgroundColor: buttonBackground,
-          primary: buttonText,
-          onSurface: buttonText,
+          // primary: buttonText,
+          // onSurface: buttonText,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100.0),
           ),

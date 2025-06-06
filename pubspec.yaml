@@ -16,11 +16,11 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-# version: 1.6.0+1 #IOS Version
-version: 1.0.0+22 #Android Version
+version: 2.0.0+1 #IOS Version
+# version: 1.0.0+26 #Android Version
 
 environment:
-  sdk: ">=3.2.0 <4.0.0"
+  sdk: ">=3.7.2 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -39,56 +39,56 @@ dependencies:
   provider:
   dio:
   in_app_purchase:
-  google_fonts: ^5.1.0
+  google_fonts: ^6.2.1
   latlong2:
   shared_preferences: ^2.2.0
   flutter_screenutil:
   image_cropper:
   image_picker:
   mask_text_input_formatter: ^2.5.0
-  intl: ^0.18.1
-  file_picker: ^5.3.3
-  sizer: ^2.0.15
+  intl: ^0.19.0
+  file_picker: ^10.1.9
+  sizer: ^3.0.5
   pin_code_fields: ^8.0.1
   flutter_easyloading: ^3.0.5
   cached_network_image:
   dotted_line: ^3.2.2
   google_sign_in: ^6.1.6
-  maps_launcher: ^2.2.1
-  sign_in_with_apple: ^5.0.0
-  readmore: ^2.2.0
+  maps_launcher: ^3.0.0+1
+  sign_in_with_apple: ^7.0.1
+  readmore: ^3.0.0
   jwt_decoder:
   flutter_rating_bar: ^4.0.1
-  firebase_core: ^2.15.1
-  extended_image: ^8.1.0
+  firebase_core: ^3.13.1
+  extended_image: ^10.0.1
   flutter_staggered_grid_view: ^0.7.0
   webview_flutter: ^3.0.4
-  photo_view: ^0.14.0
+  photo_view: ^0.15.0
   table_calendar: ^3.0.9
   circular_countdown_timer: ^0.2.3
   video_thumbnail: ^0.5.3
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   flutter_switch: ^0.3.2
-  flutter_slidable: ^3.0.0
+  flutter_slidable: ^4.0.0
   google_maps_flutter: ^2.5.0
   fijkplayer: ^0.11.0
   dropdown_button2: ^2.3.9
-  timeline_list: ^0.0.6
+  timeline_list: ^0.1.1
   timelines: ^0.1.0
   timeline_tile: ^2.0.0
-  share_plus: ^7.1.0
+  share_plus: ^11.0.0
   shimmer: ^3.0.0
-  permission_handler: 10.2.0
+  permission_handler: ^12.0.0+1
   focus_detector: 2.0.1
-  flutter_local_notifications: ^9.1.1
-  firebase_messaging: ^14.7.1
-  firebase_auth: ^4.12.0
+  flutter_local_notifications: ^19.2.1
+  firebase_messaging: ^15.2.6
+  firebase_auth: ^5.5.4
   #  flutter_stripe: ^9.5.0+1
   jiffy: ^6.2.1
-  socket_io_client: ^2.0.3+1
+  socket_io_client: ^3.1.2
   flutter_datetime_picker_plus:
-  floating: 2.0.1
-  video_player: 2.2.3
+  floating: ^6.0.0
+  video_player: ^2.10.0
   url_launcher: ^6.3.0
   #  firebase_dynamic_links: ^5.4.4
   #  flutter_google_places_hoc081098: ^2.0.0-beta.0
@@ -102,7 +102,7 @@ dependencies:
   # flutter_stripe: ^9.6.0
   fluttertoast:
   geolocator: ^10.1.0
-  geocoding: ^3.0.0
+  geocoding: ^4.0.0
   qr_code_scanner: ^1.0.1
   qr_flutter:
   encrypt:
@@ -111,7 +111,7 @@ dependencies:
   printing:
   persistent_bottom_nav_bar:
     path: bottombar
-  dotted_border: ^2.1.0
+  dotted_border: ^3.0.1
 
 dependency_overrides:
   # stripe_android: "9.5.0+1"
@@ -125,7 +125,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

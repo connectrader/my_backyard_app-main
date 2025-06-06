@@ -1,3 +1,4 @@
+import 'package:backyard/Arguments/content_argument.dart';
 import 'package:backyard/Component/custom_toast.dart';
 import 'package:backyard/Service/navigation_service.dart';
 import 'package:backyard/Service/socket_service.dart';
@@ -91,8 +92,13 @@ class _HomeViewState extends State<HomeView> {
                     if (val2.user?.subId != null && val2.user?.subId != 4) {
                       AppNavigation.navigateTo(AppRouteName.CREATE_OFFER_ROUTE);
                     } else {
-                      AppNavigation.navigateTo(
-                          AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
+                      // AppNavigation.navigateTo(
+                      //     AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
+                      AppNavigation.navigateTo(AppRouteName.CONTENT_SCREEN,
+                          arguments: ContentRoutingArgument(
+                              title: 'Subscriptions',
+                              contentType: "Subscriptions",
+                              url: 'https://www.google.com/'));
                       CustomToast().showToast(
                           message: "You Need to Subscribe to Create an Offer.");
                     }

@@ -31,8 +31,15 @@ class _ContentScreenState extends State<ContentScreen> {
     ///ye uncomment karna beta ma
     // getData(context);
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    if (widget.contentType == "Subscriptions") {
+      url = "https://mybackyardusa.com/#pricing";
+      _opacity = 1.0;
+      _isLoading = false;
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await getData();
+      if (widget.contentType != "Subscriptions") {
+        await getData();
+      }
     });
   }
 

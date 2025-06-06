@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'package:backyard/Arguments/content_argument.dart';
 import 'package:backyard/Arguments/screen_arguments.dart';
 import 'package:backyard/Component/custom_image.dart';
 import 'package:backyard/Component/custom_toast.dart';
@@ -305,8 +306,14 @@ class _DiscountOffersState extends State<DiscountOffers> {
                                 }
                               }
                             } else {
+                              // AppNavigation.navigateTo(
+                              //     AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
                               AppNavigation.navigateTo(
-                                  AppRouteName.SUBSCRIPTION_SCREEN_ROUTE);
+                                  AppRouteName.CONTENT_SCREEN,
+                                  arguments: ContentRoutingArgument(
+                                      title: 'Subscriptions',
+                                      contentType: "Subscriptions",
+                                      url: 'https://www.google.com/'));
                               CustomToast().showToast(
                                   message:
                                       "You Need to Subscribe to Avail an Offer.");

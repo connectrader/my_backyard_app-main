@@ -59,11 +59,12 @@ class _CreateOfferState extends State<CreateOffer> {
       await getCategories();
       setLoading(false);
       if (widget.edit) {
-        selected = navigatorKey.currentContext
-            ?.read<HomeController>()
-            .categories
-            ?.where((element) => element.id == widget.model?.category?.id)
-            .firstOrNull;
+        selected =
+            navigatorKey.currentContext
+                ?.read<HomeController>()
+                .categories
+                ?.where((element) => element.id == widget.model?.category?.id)
+                .firstOrNull;
         setState(() {});
       }
     });
@@ -114,13 +115,15 @@ class _CreateOfferState extends State<CreateOffer> {
           child: CustomPadding(
             topPadding: 0.h,
             horizontalPadding: 3.w,
-            child: Consumer<HomeController>(builder: (context, val, _) {
-              return val.loading
-                  ? Center(
+            child: Consumer<HomeController>(
+              builder: (context, val, _) {
+                return val.loading
+                    ? Center(
                       child: CircularProgressIndicator(
-                          color: MyColors().primaryColor),
+                        color: MyColors().primaryColor,
+                      ),
                     )
-                  : Column(
+                    : Column(
                       children: [
                         CustomAppBar(
                           screenTitle:
@@ -131,9 +134,7 @@ class _CreateOfferState extends State<CreateOffer> {
                           bottom: 2.h,
                         ),
                         // Wrap(children: List.generate(, (index) => )),
-                        SizedBox(
-                          height: 2.h,
-                        ),
+                        SizedBox(height: 2.h),
                         Expanded(
                           child: SingleChildScrollView(
                             child: Form(
@@ -143,44 +144,55 @@ class _CreateOfferState extends State<CreateOffer> {
                                 children: [
                                   permit.path != ""
                                       ? GestureDetector(
-                                          onTap: () {
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
+                                        onTap: () {
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
 
-                                            ImageGalleryClass()
-                                                .imageGalleryBottomSheet(
-                                                    context: context,
-                                                    onMediaChanged: (val) {
-                                                      if (val != null) {
-                                                        permit = File(val);
-                                                      }
-                                                    });
-                                          },
+                                          ImageGalleryClass()
+                                              .imageGalleryBottomSheet(
+                                                context: context,
+                                                onMediaChanged: (val) {
+                                                  if (val != null) {
+                                                    permit = File(val);
+                                                  }
+                                                },
+                                              );
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
                                           child: DottedBorder(
-                                            borderType: BorderType.RRect,
-                                            color: MyColors().secondaryColor,
-                                            dashPattern: [6, 6, 6, 6],
-                                            strokeWidth: 2,
-                                            radius: Radius.circular(12),
-                                            padding: EdgeInsets.all(6),
+                                            options: RectDottedBorderOptions(
+                                              color: MyColors().secondaryColor,
+                                              padding: EdgeInsets.all(6),
+                                              strokeWidth: 2,
+                                              dashPattern: [6, 6, 6, 6],
+                                            ),
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(12)),
+                                                Radius.circular(12),
+                                              ),
                                               child: Container(
                                                 width: 100.w,
                                                 height: 12.h,
                                                 decoration: BoxDecoration(
                                                   image: DecorationImage(
-                                                      fit: BoxFit.cover,
-                                                      image: (permit.path == ""
-                                                          ?
-                                                          // AuthController.i.user.value.permit!=''?
-                                                          // NetworkImage(APIEndpoints.baseImageURL+AuthController.i.user.value.permit) :
-                                                          const AssetImage(
-                                                              ImagePath
-                                                                  .noUserImage)
-                                                          : FileImage(
-                                                              permit)) as ImageProvider),
+                                                    fit: BoxFit.cover,
+                                                    image:
+                                                        (permit.path == ""
+                                                                ?
+                                                                // AuthController.i.user.value.permit!=''?
+                                                                // NetworkImage(APIEndpoints.baseImageURL+AuthController.i.user.value.permit) :
+                                                                const AssetImage(
+                                                                  ImagePath
+                                                                      .noUserImage,
+                                                                )
+                                                                : FileImage(
+                                                                  permit,
+                                                                ))
+                                                            as ImageProvider,
+                                                  ),
                                                   //   color: MyColors().secondaryColor.withOpacity(.26),
                                                   // border: Border.all(
                                                   //   color: MyColors().secondaryColor
@@ -189,7 +201,8 @@ class _CreateOfferState extends State<CreateOffer> {
                                               ),
                                             ),
                                           ),
-                                        )
+                                        ),
+                                      )
                                       :
                                       // AuthController.i.user.value.permit!=''?
                                       // GestureDetector(
@@ -246,62 +259,60 @@ class _CreateOfferState extends State<CreateOffer> {
                                       //   ),
                                       // ):
                                       (widget.model?.image != null)
-                                          ? Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  child: CustomImage(
-                                                      width: 100.w,
-                                                      height: 12.h,
-                                                      url: widget.model?.image),
+                                      ? Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
+                                            child: CustomImage(
+                                              width: 100.w,
+                                              height: 12.h,
+                                              url: widget.model?.image,
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                              ImageGalleryClass()
+                                                  .imageGalleryBottomSheet(
+                                                    context: context,
+                                                    onMediaChanged: (val) {
+                                                      if (val != null) {
+                                                        permit = File(val);
+                                                        setState(() {});
+                                                      }
+                                                    },
+                                                  );
+                                            },
+                                            child: Opacity(
+                                              opacity: .7,
+                                              child: CircleAvatar(
+                                                backgroundColor:
+                                                    MyColors().primaryColor,
+                                                child: const Icon(
+                                                  Icons.close,
+                                                  color: Colors.black,
                                                 ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    FocusManager
-                                                        .instance.primaryFocus
-                                                        ?.unfocus();
-                                                    ImageGalleryClass()
-                                                        .imageGalleryBottomSheet(
-                                                            context: context,
-                                                            onMediaChanged:
-                                                                (val) {
-                                                              if (val != null) {
-                                                                permit =
-                                                                    File(val);
-                                                                setState(() {});
-                                                              }
-                                                            });
-                                                  },
-                                                  child: Opacity(
-                                                    opacity: .7,
-                                                    child: CircleAvatar(
-                                                      backgroundColor:
-                                                          MyColors()
-                                                              .primaryColor,
-                                                      child: const Icon(
-                                                          Icons.close,
-                                                          color: Colors.black),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          : uploadMedia(),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                      : uploadMedia(),
                                   if (error)
                                     const Text(
                                       "Upload Image can't be empty",
                                       style: TextStyle(
-                                          height: 1, color: Colors.red),
+                                        height: 1,
+                                        color: Colors.red,
+                                      ),
                                     ),
                                   SizedBox(height: 2.h),
-                                  customTitle(
-                                    title: 'Title',
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
+                                  customTitle(title: 'Title'),
+                                  SizedBox(height: 1.h),
                                   MyTextField(
                                     hintText: 'Title',
                                     controller: titleController,
@@ -309,89 +320,75 @@ class _CreateOfferState extends State<CreateOffer> {
                                     showLabel: false,
                                     backgroundColor: MyColors().container,
                                     validate: true,
-                                    validation: (p0) =>
-                                        p0?.validateEmpty("Title"),
+                                    validation:
+                                        (p0) => p0?.validateEmpty("Title"),
                                     // borderColor: MyColors().secondaryColor,
                                     // hintTextColor: MyColors().grey,
                                     // textColor: MyColors().black,
                                   ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  customTitle(
-                                    title: 'Select Category',
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
+                                  SizedBox(height: 2.h),
+                                  customTitle(title: 'Select Category'),
+                                  SizedBox(height: 1.h),
                                   CustomDropDown2(
                                     hintText: 'Select Category',
                                     bgColor: MyColors().container,
                                     dropDownData: val.categories,
                                     dropdownValue: selected,
-                                    validator: (p0) => (p0 == null)
-                                        ? "Category can't be empty"
-                                        : null,
+                                    validator:
+                                        (p0) =>
+                                            (p0 == null)
+                                                ? "Category can't be empty"
+                                                : null,
                                     onChanged: (v) {
                                       selected = v;
                                       setState(() {});
                                     },
                                   ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  customTitle(
-                                    title: 'Actual Price',
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
+                                  SizedBox(height: 2.h),
+                                  customTitle(title: 'Actual Price'),
+                                  SizedBox(height: 1.h),
                                   MyTextField(
                                     hintText: 'Actual Price',
                                     controller: actualPriceController,
                                     maxLength: 6,
                                     inputType:
                                         const TextInputType.numberWithOptions(
-                                            decimal: true),
+                                          decimal: true,
+                                        ),
                                     showLabel: false,
                                     numberWithDecimal: true,
                                     backgroundColor: MyColors().container,
                                     validate: true,
-                                    validation: (p0) =>
-                                        p0?.validateEmpty("Actual Price"),
+                                    validation:
+                                        (p0) =>
+                                            p0?.validateEmpty("Actual Price"),
                                     // borderColor: MyColors().secondaryColor,
                                     // hintTextColor: MyColors().grey,
                                     // textColor: MyColors().black,
                                   ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  customTitle(
-                                    title: 'Discount Price',
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
+                                  SizedBox(height: 2.h),
+                                  customTitle(title: 'Discount Price'),
+                                  SizedBox(height: 1.h),
                                   MyTextField(
                                     hintText: 'Discount Price',
                                     controller: discountController,
                                     maxLength: 6,
                                     inputType:
                                         const TextInputType.numberWithOptions(
-                                            decimal: true),
+                                          decimal: true,
+                                        ),
                                     showLabel: false,
                                     numberWithDecimal: true,
                                     backgroundColor: MyColors().container,
                                     validate: true,
-                                    validation: (p0) =>
-                                        p0?.validateEmpty("Discount Price"),
+                                    validation:
+                                        (p0) =>
+                                            p0?.validateEmpty("Discount Price"),
                                     // borderColor: MyColors().secondaryColor,
                                     // hintTextColor: MyColors().grey,
                                     // textColor: MyColors().black,
                                   ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
+                                  SizedBox(height: 2.h),
 
                                   // customTitle(
                                   //   title: 'Reward Points',
@@ -417,12 +414,8 @@ class _CreateOfferState extends State<CreateOffer> {
                                   // SizedBox(
                                   //   height: 2.h,
                                   // ),
-                                  customTitle(
-                                    title: 'Short Details',
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
+                                  customTitle(title: 'Short Details'),
+                                  SizedBox(height: 1.h),
                                   MyTextField(
                                     height: 8.h,
                                     hintText: 'Short Details',
@@ -431,21 +424,16 @@ class _CreateOfferState extends State<CreateOffer> {
                                     minLines: 5,
                                     controller: shortDetailController,
                                     validate: true,
-                                    validation: (p0) =>
-                                        p0?.validateEmpty("Short Detail"),
+                                    validation:
+                                        (p0) =>
+                                            p0?.validateEmpty("Short Detail"),
                                     borderRadius: 10,
                                     maxLength: 275,
                                     backgroundColor: MyColors().container,
                                   ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  customTitle(
-                                    title: 'Description',
-                                  ),
-                                  SizedBox(
-                                    height: 1.h,
-                                  ),
+                                  SizedBox(height: 2.h),
+                                  customTitle(title: 'Description'),
+                                  SizedBox(height: 1.h),
                                   MyTextField(
                                     height: 8.h,
                                     hintText: 'Description',
@@ -454,15 +442,14 @@ class _CreateOfferState extends State<CreateOffer> {
                                     minLines: 5,
                                     controller: descriptionController,
                                     validate: true,
-                                    validation: (p0) =>
-                                        p0?.validateEmpty("Description"),
+                                    validation:
+                                        (p0) =>
+                                            p0?.validateEmpty("Description"),
                                     borderRadius: 10,
                                     maxLength: 275,
                                     backgroundColor: MyColors().container,
                                   ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
+                                  SizedBox(height: 2.h),
                                   MyButton(
                                     title: widget.edit ? 'Update' : 'Continue',
                                     onTap: () async {
@@ -477,21 +464,21 @@ class _CreateOfferState extends State<CreateOffer> {
                                         if (widget.edit) {
                                           AppNetwork.loadingProgressIndicator();
                                           final val = await BusAPIS.editOffer(
-                                              offerId:
-                                                  widget.model?.id?.toString(),
-                                              title: titleController.text,
-                                              categoryId:
-                                                  selected?.id?.toString() ??
-                                                      "",
-                                              actualPrice:
-                                                  actualPriceController.text,
-                                              discountPrice:
-                                                  discountController.text,
-                                              rewardPoints: "2",
-                                              shortDetail:
-                                                  shortDetailController.text,
-                                              desc: descriptionController.text,
-                                              image: permit);
+                                            offerId:
+                                                widget.model?.id?.toString(),
+                                            title: titleController.text,
+                                            categoryId:
+                                                selected?.id?.toString() ?? "",
+                                            actualPrice:
+                                                actualPriceController.text,
+                                            discountPrice:
+                                                discountController.text,
+                                            rewardPoints: "2",
+                                            shortDetail:
+                                                shortDetailController.text,
+                                            desc: descriptionController.text,
+                                            image: permit,
+                                          );
                                           AppNavigation.navigatorPop();
                                           if (val) {
                                             AppNavigation.navigatorPop();
@@ -500,19 +487,19 @@ class _CreateOfferState extends State<CreateOffer> {
                                         } else {
                                           AppNetwork.loadingProgressIndicator();
                                           final val = await BusAPIS.addOffer(
-                                              title: titleController.text,
-                                              categoryId:
-                                                  selected?.id?.toString() ??
-                                                      "",
-                                              actualPrice:
-                                                  actualPriceController.text,
-                                              discountPrice:
-                                                  discountController.text,
-                                              rewardPoints: "2",
-                                              shortDetail:
-                                                  shortDetailController.text,
-                                              desc: descriptionController.text,
-                                              image: permit);
+                                            title: titleController.text,
+                                            categoryId:
+                                                selected?.id?.toString() ?? "",
+                                            actualPrice:
+                                                actualPriceController.text,
+                                            discountPrice:
+                                                discountController.text,
+                                            rewardPoints: "2",
+                                            shortDetail:
+                                                shortDetailController.text,
+                                            desc: descriptionController.text,
+                                            image: permit,
+                                          );
                                           AppNavigation.navigatorPop();
                                           if (val) {
                                             titleController.text =
@@ -530,9 +517,7 @@ class _CreateOfferState extends State<CreateOffer> {
                                       }
                                     },
                                   ),
-                                  SizedBox(
-                                    height: 3.h,
-                                  ),
+                                  SizedBox(height: 3.h),
                                   // SizedBox(height: 10.h,),
                                 ],
                               ),
@@ -541,7 +526,8 @@ class _CreateOfferState extends State<CreateOffer> {
                         ),
                       ],
                     );
-            }),
+              },
+            ),
           ),
         ),
       ),
@@ -563,50 +549,50 @@ class _CreateOfferState extends State<CreateOffer> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GestureDetector(
-              onTap: () {
-                FocusManager.instance.primaryFocus?.unfocus();
-                ImageGalleryClass().imageGalleryBottomSheet(
-                    context: context,
-                    onMediaChanged: (val) {
-                      if (val != null) {
-                        permit = File(val);
-                        setState(() {});
-                      }
-                    });
-              },
-              child: Container(
-                width: 100.w,
-                height: 12.h,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  // color: Colors.red,
-                  image: DecorationImage(
-                      image: AssetImage(
-                        ImagePath.dottedBorder,
-                      ),
-                      fit: BoxFit.fill),
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+              ImageGalleryClass().imageGalleryBottomSheet(
+                context: context,
+                onMediaChanged: (val) {
+                  if (val != null) {
+                    permit = File(val);
+                    setState(() {});
+                  }
+                },
+              );
+            },
+            child: Container(
+              width: 100.w,
+              height: 12.h,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                // color: Colors.red,
+                image: DecorationImage(
+                  image: AssetImage(ImagePath.dottedBorder),
+                  fit: BoxFit.fill,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(ImagePath.upload,
-                        scale: 2, color: MyColors().primaryColor),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    MyText(
-                      title: 'Upload image',
-                      size: 16,
-                      clr: MyColors().black,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ],
-                ),
-              )),
-          SizedBox(
-            height: 2.h,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    ImagePath.upload,
+                    scale: 2,
+                    color: MyColors().primaryColor,
+                  ),
+                  SizedBox(height: 1.h),
+                  MyText(
+                    title: 'Upload image',
+                    size: 16,
+                    clr: MyColors().black,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ],
+              ),
+            ),
           ),
+          SizedBox(height: 2.h),
           // Wrap(children: List.generate(imagePath.length, (index) => Padding(
           //   padding:  EdgeInsets.symmetric(horizontal:2.w,vertical: 2.w),
           //   child: Container(
@@ -652,59 +638,63 @@ class _CreateOfferState extends State<CreateOffer> {
   completeDialog() {
     navigatorKey.currentContext?.read<HomeController>().setIndex(0);
     return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: AlertDialog(
-              backgroundColor: Colors.transparent,
-              contentPadding: const EdgeInsets.all(0),
-              insetPadding: EdgeInsets.symmetric(horizontal: 4.w),
-              content: CustomDialog(
-                title: 'Successfully',
-                // image: ImagePath.scan3,
-                description: widget.edit
-                    ? 'Offer have been successfully updated.'
-                    : 'Offer have been successfully created.',
-                b1: 'Continue',
-                // b2: 'Download QR Code',
-                onYes: (v) {
-                  AppNavigation.navigatorPop();
-                },
-                // button2: (v) {
-                //   downloadDialog();
-                // },
-              ),
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: const EdgeInsets.all(0),
+            insetPadding: EdgeInsets.symmetric(horizontal: 4.w),
+            content: CustomDialog(
+              title: 'Successfully',
+              // image: ImagePath.scan3,
+              description:
+                  widget.edit
+                      ? 'Offer have been successfully updated.'
+                      : 'Offer have been successfully created.',
+              b1: 'Continue',
+              // b2: 'Download QR Code',
+              onYes: (v) {
+                AppNavigation.navigatorPop();
+              },
+              // button2: (v) {
+              //   downloadDialog();
+              // },
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   downloadDialog() {
     return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: AlertDialog(
-              backgroundColor: Colors.transparent,
-              contentPadding: const EdgeInsets.all(0),
-              insetPadding: EdgeInsets.symmetric(horizontal: 4.w),
-              content: CustomDialog(
-                title: 'Download',
-                image: ImagePath.download,
-                description: 'Are you sure you want to download qr code?',
-                b1: 'Continue',
-                onYes: (v) {
-                  AppNavigation.navigatorPop();
-                  CustomToast()
-                      .showToast(message: 'QR Code downloaded successfully');
-                },
-              ),
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: const EdgeInsets.all(0),
+            insetPadding: EdgeInsets.symmetric(horizontal: 4.w),
+            content: CustomDialog(
+              title: 'Download',
+              image: ImagePath.download,
+              description: 'Are you sure you want to download qr code?',
+              b1: 'Continue',
+              onYes: (v) {
+                AppNavigation.navigatorPop();
+                CustomToast().showToast(
+                  message: 'QR Code downloaded successfully',
+                );
+              },
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }
